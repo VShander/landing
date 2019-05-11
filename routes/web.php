@@ -29,11 +29,11 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     //---------------------------------------------
     Route::group(['prefix' => 'pages'], function () {
 
-            Route::get('/', ['uses' => 'PagesController@execute', 'as' => 'pages']);
-            Route::match(['GET', 'POST'], '/add', ['uses' => 'PagesAddController@execute', 'as' => 'pagesAdd']);
-            Route::match(['GET', 'POST', 'DELETE'], '/edit/{page}', ['uses' => 'PagesEditController@execute',
-                'as' => 'pagesEdit']);
-        });
+        Route::get('/', ['uses' => 'PagesController@execute', 'as' => 'pages']);
+        Route::match(['GET', 'POST'], '/add', ['uses' => 'PagesAddController@execute', 'as' => 'pagesAdd']);
+        Route::match(['GET', 'POST', 'DELETE'], '/edit/{page}', ['uses' => 'PagesEditController@execute',
+            'as' => 'pagesEdit']);
+    });
     //----------------------------------------------
     Route::group(['prefix' => 'portfolios'], function () {
 
