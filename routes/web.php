@@ -11,10 +11,10 @@
 |
 */
 
-Route::group(['middleware' => 'web'], function () {
+Route::group([], function () {
 
     Route::match(['GET', 'POST'], '/', ['uses' => 'IndexController@execute', 'as' => 'home']);
-    Route::get('.page/{alias}', ['uses' => 'PageController@execute', 'as' => 'page']);
+    Route::get('/page/{alias}', ['uses' => 'PageController@execute', 'as' => 'page']);
     //Admin Routes
     Route::auth();
 });
@@ -51,3 +51,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
             'as' => 'servicesEdit']);
     });
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
