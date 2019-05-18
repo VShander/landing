@@ -17,6 +17,8 @@ class IndexController extends Controller {
         $services = Service ::where('id', '<', 20) -> get();
         $peoples = People ::take(3) -> get();
 
+        $tags = Portfolio ::distinct()->get(['filter']);
+
         $menu = array();
         foreach ($pages as $page) {
             $item = ['title' => $page -> name, 'alias' => $page -> alias];
@@ -37,7 +39,8 @@ class IndexController extends Controller {
             'pages' => $pages,
             'services' => $services,
             'portfolios' => $portfolios,
-            'peoples' => $peoples
+            'peoples' => $peoples,
+            'tags' => $tags
         ]);
     }
 }
